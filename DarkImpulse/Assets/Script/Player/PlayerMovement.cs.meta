@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 29f738fd53c423f4d95c0b6d20417d5c
 timeCreated: 1517085011
+=======
+guid: 1810c6fb3fd1d49479691e78acbc0568
+timeCreated: 1517080780
+>>>>>>> PlayerNetwork
 licenseType: Free
 MonoImporter:
   externalObjects: {}
