@@ -7,6 +7,8 @@ public class TagComponent : MonoBehaviour {
 
     private CircleCollider2D sweepCircle;
 
+    private WallDetection m_WallDetection;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +16,7 @@ public class TagComponent : MonoBehaviour {
             return;
 
         print("Found a hider!");
+        m_WallDetection = collision.GetComponent<WallDetection>();
         //TODO: 
         // expand the radius of the circle 
         ExpandSweepArea();
@@ -38,6 +41,6 @@ public class TagComponent : MonoBehaviour {
 
     private void SetHiderPositionNotification()
     {
-
+        m_WallDetection.PlayerDetected();
     }
 }
