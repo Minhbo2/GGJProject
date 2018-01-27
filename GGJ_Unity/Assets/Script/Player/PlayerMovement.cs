@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
 	Rigidbody m_RigidBody;
 
 	public float m_MoveSpeed;
-
+    public float m_SignalSpeed;
     public float m_MaxSpeed;
-	// Use this for initialization
-	void Start () {
+
+    public bool Tagged;
+    // Use this for initialization
+    void Start ()
+    {
 		m_MoveSpeed = 1.0f;
         m_MaxSpeed = 250;
 		m_RigidBody = GetComponent<Rigidbody> ();
@@ -19,11 +22,16 @@ public class PlayerController : MonoBehaviour {
         {
            m_RigidBody = gameObject.AddComponent<Rigidbody>() as Rigidbody;
         }
+    }
+
+    private void Update()
+    {
 
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    void FixedUpdate ()
+    {
 
         if (m_RigidBody.velocity.sqrMagnitude < m_MaxSpeed)
         {
@@ -45,12 +53,14 @@ public class PlayerController : MonoBehaviour {
             {
                 m_RigidBody.velocity += Vector3.right * m_MoveSpeed;
             }
-            Debug.Log(m_RigidBody.velocity.sqrMagnitude);
 
         }
 
-
-
 		
 	}
+
+
+
+
+
 }
