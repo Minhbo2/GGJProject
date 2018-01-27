@@ -35,15 +35,9 @@ public class SetupLocalPlayer : NetworkBehaviour
         if (isLocalPlayer)
         {
             //Enable Movement script
-<<<<<<< HEAD
             PlayerMovement s_MovementScript = GetComponent<PlayerMovement>();
             s_MovementScript.enabled = true;
-            
-=======
-            PlayerMovement s_MovementScript;
-            s_MovementScript = GetComponent<PlayerMovement>();
-            s_MovementScript.enabled = true;
->>>>>>> PlayerNetwork
+           
 
             Renderer renderer = GetComponent<Renderer>();
             renderer.material.color = playerColor;
@@ -121,7 +115,7 @@ public class SetupLocalPlayer : NetworkBehaviour
     private Vector3 RandomPointInLevel()
     {
         float randX = Random.Range(minBoxBound, maxBoxBound);
-        float randY = Random.Range(minBoxBound, maxBoxBound);
-        return new Vector3(randX, randY, 0);
+        float randZ = Random.Range(minBoxBound, maxBoxBound);
+        return new Vector3(randX, 0, randZ);
     }
 }
