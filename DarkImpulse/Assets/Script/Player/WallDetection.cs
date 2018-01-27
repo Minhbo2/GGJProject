@@ -19,7 +19,7 @@ public class WallDetection : MonoBehaviour {
         {
             m_hasCollided = false;
             Debug.Log("Collided");
-            m_playerColor.material = Resources.Load("NPC/Material/testMat_2") as Material;
+            m_playerColor.material = Resources.Load("Player/Material/testMat_2") as Material;
             StartCoroutine(loseDetection());
         }
 	}
@@ -36,7 +36,7 @@ public class WallDetection : MonoBehaviour {
     IEnumerator loseDetection()
     {
         yield return new WaitForSeconds(1);
-        m_playerColor.material = Resources.Load("NPC/Material/testMat_1") as Material;
+        m_playerColor.material = Resources.Load("Player/Material/testMat_1") as Material;
     }
 
     // Call this function to activate notification
