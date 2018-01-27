@@ -3,9 +3,15 @@
 public class TagComponent : MonoBehaviour {
 
     [SerializeField]
-    private float expandSweepByAmound;
+    private float expandAmount;
+    [SerializeField]
+    private float sweepMaxSize;
+
 
     private CircleCollider2D sweepCircle;
+
+
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +31,11 @@ public class TagComponent : MonoBehaviour {
     private void ExpandSweepArea()
     {
         if (HasSweepCircle())
-            sweepCircle.radius += expandSweepByAmound;
+        {
+            float currentSweepSize = sweepCircle.radius;
+            if(currentSweepSize < sweepMaxSize)
+                sweepCircle.radius += expandAmount;
+        }
     }
 
 
