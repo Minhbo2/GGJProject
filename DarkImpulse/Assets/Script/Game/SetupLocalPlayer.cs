@@ -35,8 +35,8 @@ public class SetupLocalPlayer : NetworkBehaviour
         if (isLocalPlayer)
         {
             //Enable Movement script
-            PlayerMovement s_MovementScript;
-            s_MovementScript = GetComponent<PlayerMovement>().enabled = true;
+            PlayerMovement s_MovementScript = GetComponent<PlayerMovement>();
+            s_MovementScript.enabled = true;
             
 
             Renderer renderer = GetComponent<Renderer>();
