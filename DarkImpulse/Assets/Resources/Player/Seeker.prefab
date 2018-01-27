@@ -316,4 +316,6 @@ MonoBehaviour:
   m_MoveSpeed: 0
   m_SignalSpeed: 0
   m_MaxSpeed: 0
-  Tagged: 0
+  isSeeker: 0
+  seekerMat: {fileID: 2100000, guid: 7aa46d056fe44a84188cc15d9dfac4bd, type: 2}
+  hiderMat: {fileID: 2100000, guid: 1c45e455619ded049a383f589568a73f, type: 2}
