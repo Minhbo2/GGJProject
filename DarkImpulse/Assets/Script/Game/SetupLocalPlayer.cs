@@ -27,8 +27,8 @@ public class SetupLocalPlayer : NetworkBehaviour
         {
             //Enable Movement script
             PlayerMovement s_MovementScript;
-            s_MovementScript = GetComponent<PlayerMovement>().enabled = true;
-            
+            s_MovementScript = GetComponent<PlayerMovement>();
+            s_MovementScript.enabled = true;
 
             Renderer renderer = GetComponent<Renderer>();
             renderer.material.color = playerColor;
