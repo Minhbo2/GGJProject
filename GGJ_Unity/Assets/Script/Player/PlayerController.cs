@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 		m_MoveSpeed = 1.0f;
 		m_RigidBody = gameObject.GetComponent<Rigidbody> ();
 
-			
 	}
 	
 	// Update is called once per frame
@@ -48,8 +47,6 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (Input.GetKey (KeyCode.Space)) 
 		{
-			Debug.Log ("ASDASD");
-
 			m_RigidBody.velocity += Vector3.up * m_MoveSpeed;
 		}
 	}
