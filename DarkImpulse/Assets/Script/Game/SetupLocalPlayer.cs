@@ -25,8 +25,11 @@ public class SetupLocalPlayer : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            //TODO: 
-            //enable movement script
+            //Enable Movement script
+            PlayerMovement s_MovementScript;
+            s_MovementScript = GetComponent<PlayerMovement>().enabled = true;
+            
+
             Renderer renderer = GetComponent<Renderer>();
             renderer.material.color = playerColor;
             this.gameObject.name = playerName;
