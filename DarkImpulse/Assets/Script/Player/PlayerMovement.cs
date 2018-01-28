@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     private string horizontalAxis;
     private string verticalAxis;
 
-
+    public GameObject childSpotlight;
     // Use this for initialization
     void Start ()
     {
@@ -33,11 +33,15 @@ public class PlayerMovement : MonoBehaviour {
             gameObject.tag = "Hider";
             horizontalAxis = "ArrowHorizontal";
             verticalAxis = "ArrowVertical";
+            childSpotlight.SetActive(false);
+
         }
         else
         {
             horizontalAxis = "Horizontal";
             verticalAxis = "Vertical";
+            childSpotlight.SetActive(true);
+
         }
     }
 

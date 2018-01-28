@@ -5,6 +5,7 @@ using UnityEngine;
 public class WallDetection : MonoBehaviour {
     GameObject Signal;
     bool wait;
+    bool wait1;
     //How fast will the speed travel
     float m_SignalSpeed;
 
@@ -25,10 +26,10 @@ public class WallDetection : MonoBehaviour {
     {
         wait = false;
         m_SignalSpeed = 1.1f;
-        ScaleTime = .1f;
+        ScaleTime = .35f;
         StillIn = false;
-
-		sonarSound = gameObject.AddComponent<AudioSource> ();
+        wait1 = true;
+        sonarSound = GetComponent<AudioSource>();
 
     }
 
@@ -41,12 +42,23 @@ public class WallDetection : MonoBehaviour {
         {
             Signal.transform.position = gameObject.transform.position;
 
-			sonarSound.clip = sonarClip;
-			sonarSound.Play ();
+            if(wait1)
+            {
+                StartCoroutine("WaitSecs");
+                wait1 = false;
+            }
 
             Vector3 currentScale = Signal.transform.localScale;
             Signal.transform.localScale = new Vector3(currentScale.x * m_SignalSpeed, currentScale.y++, currentScale.z * m_SignalSpeed);
         }
+
+    }
+    IEnumerator WaitSecs()
+    {
+        sonarSound.clip = sonarClip;
+        sonarSound.Play();
+        yield return new WaitForSeconds(1.25f);
+        wait1 = true;
 
     }
 

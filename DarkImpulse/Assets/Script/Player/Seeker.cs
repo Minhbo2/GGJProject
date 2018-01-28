@@ -21,16 +21,21 @@ public class Seeker : MonoBehaviour {
 	AudioSource sonarSound;
 	public AudioClip sonarClip;
 
+    private void Awake()
+    {
+
+        if (gameObject.GetComponent<AudioSource>() != true)
+            sonarSound = gameObject.AddComponent<AudioSource>();
+    }
+
     // Use this for initialization
     void Start () {
         Signal = null;
 
         m_SignalSpeed = 1.075f;
         m_SignalCooldown = 0f;
-        ScaleTime = 1f;
+        ScaleTime = 1.5f;
 
-        if(gameObject.GetComponent<AudioSource>() != true)
-		sonarSound = gameObject.AddComponent<AudioSource> ();
     }
 	
 	// Update is called once per frame
@@ -69,8 +74,6 @@ public class Seeker : MonoBehaviour {
             StartCoroutine(TransmitSignal(ScaleTime));
 
         }
-
-
        // Debug.Log(m_SignalCooldown);
     }
 
