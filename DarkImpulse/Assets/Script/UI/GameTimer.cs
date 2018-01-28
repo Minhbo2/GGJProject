@@ -22,8 +22,16 @@ public class GameTimer : MonoBehaviour {
 		timerText.text = m_minutes + " Min " + m_seconds.ToString("00") + " Sec";
 		if((m_seconds == 0) &&(m_minutes == 0))
 		{
-			timerText.text = "";
-		}	
+            if (GameObject.FindGameObjectsWithTag("Hider") != null)
+            {
+                timerText.text = "Hiders were able to evade the Seeker. Hiders Win.";
+            }
+            else
+            {
+                timerText.text = "Seekers were able to destroy the Hiders. Seekers Win.";
+
+            }
+        }	
 	}
 
 

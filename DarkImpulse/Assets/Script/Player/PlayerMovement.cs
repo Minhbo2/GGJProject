@@ -26,7 +26,12 @@ public class PlayerMovement : MonoBehaviour {
            m_RigidBody = gameObject.AddComponent<Rigidbody>() as Rigidbody;
         }
 
+        if (GetComponent<Seeker>().enabled == false)
+        {
+            gameObject.tag = "Hider";
+        }
     }
+
 
 
     // Update is called once per frame

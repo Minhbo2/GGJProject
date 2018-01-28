@@ -29,6 +29,7 @@ public class Seeker : MonoBehaviour {
         m_SignalCooldown = 0f;
         ScaleTime = 1f;
 
+        if(gameObject.GetComponent<AudioSource>() != true)
 		sonarSound = gameObject.AddComponent<AudioSource> ();
     }
 	
