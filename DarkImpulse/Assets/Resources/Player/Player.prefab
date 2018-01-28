@@ -43,9 +43,6 @@ GameObject:
   - component: {fileID: 65258104790469892}
   - component: {fileID: 114320166804055362}
   - component: {fileID: 114120661082761468}
-  - component: {fileID: 114649270090641494}
-  - component: {fileID: 114402547265155384}
-  - component: {fileID: 114143017752235188}
   m_Layer: 0
   m_Name: Player
   m_TagString: Seeker
@@ -89,6 +86,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -104,6 +102,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -190,20 +189,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -223,24 +208,6 @@ MonoBehaviour:
   WallHit: {fileID: 8300000, guid: 60bdc7dfb735f37469f888273fc0b981, type: 3}
   HidersCollide: {fileID: 8300000, guid: 1cc9eb42dba809e4c9ecffc62417c887, type: 3}
   sonarClip: {fileID: 8300000, guid: 3268044d48c5a474aa7c58e24c1d682a, type: 3}
---- !u!114 &114143017752235188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833857466579694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd08dff615ee4489f3a11a6d2da288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerName: 
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
-  lobbyAssignFlag: 0
-  minBoxBound: -10
-  maxBoxBound: 10
-  sphereCastRadius: 5
-  light: {fileID: 1784793592653072}
 --- !u!114 &114320166804055362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,27 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sonarClip: {fileID: 8300000, guid: 3268044d48c5a474aa7c58e24c1d682a, type: 3}
---- !u!114 &114402547265155384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833857466579694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114619175630906614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,35 +234,3 @@ MonoBehaviour:
   m_MoveSpeed: 0
   m_SignalSpeed: 0
   m_MaxSpeed: 0
---- !u!114 &114649270090641494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833857466579694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 243
-    i1: 75
-    i2: 146
-    i3: 178
-    i4: 241
-    i5: 184
-    i6: 129
-    i7: 244
-    i8: 187
-    i9: 104
-    i10: 124
-    i11: 243
-    i12: 144
-    i13: 64
-    i14: 232
-    i15: 148
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1

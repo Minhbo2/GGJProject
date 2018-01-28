@@ -47,7 +47,6 @@ public class GameTimer : MonoBehaviour {
 		while(m_isCountingDown)
 		{
 			yield return new WaitForSeconds(1);
-			Debug.Log(m_minutes + "minutes" + m_seconds.ToString("00") + "seconds");
 			if((m_seconds == 0) &&(m_minutes == 0))
 			{
 				m_isCountingDown = !m_isCountingDown;
