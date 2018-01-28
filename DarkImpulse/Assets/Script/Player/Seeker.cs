@@ -18,11 +18,6 @@ public class Seeker : MonoBehaviour {
     //How long to scale signal for
     float ScaleTime;
 
-    //Custom speed variables in inspector apart from player movement script, so you dont have to touch playermovement script
-    public float CustomSeekerSpeed;
-    public float CustomMaxSeekerSpeed;
-
-    bool TransmitReady;
 
     // Use this for initialization
     void Start () {

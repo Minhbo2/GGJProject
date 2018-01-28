@@ -18,7 +18,7 @@ public class WallDetection : MonoBehaviour {
     {
         wait = false;
         m_SignalSpeed = 1.1f;
-        ScaleTime = .45f;
+        ScaleTime = .35f;
         StillIn = false;
     }
 
@@ -37,14 +37,21 @@ public class WallDetection : MonoBehaviour {
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Signal" && gameObject.tag != "Seeker")
+        {
+            BlipBack();
+        }
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Wall")
         {
-            if (Signal == null)
-                Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
+            BlipBack();
 
-            StartCoroutine(TransmitSignal(ScaleTime));
         }
     }
 
@@ -73,6 +80,14 @@ public class WallDetection : MonoBehaviour {
         StillIn = false;
     }
 
+    void BlipBack()
+    {
+        if (Signal == null)
+            Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
+
+        StartCoroutine(TransmitSignal(ScaleTime));
+    }
+
     IEnumerator TransmitSignal(float time)
     {
         TransmitReady = true;
@@ -81,4 +96,7 @@ public class WallDetection : MonoBehaviour {
         wait = false;
         Destroy(Signal);
     }
+
+
+
 }
