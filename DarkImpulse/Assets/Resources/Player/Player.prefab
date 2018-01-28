@@ -89,7 +89,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -105,7 +104,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -192,6 +190,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -207,6 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c350edc82dea42047a36efcc21acf002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonarHitClip: {fileID: 8300000, guid: 6df156b9a665d83419df0bf52a6c76a4, type: 3}
+  WallHit: {fileID: 8300000, guid: 60bdc7dfb735f37469f888273fc0b981, type: 3}
+  HidersCollide: {fileID: 8300000, guid: 1cc9eb42dba809e4c9ecffc62417c887, type: 3}
+  sonarClip: {fileID: 8300000, guid: 3268044d48c5a474aa7c58e24c1d682a, type: 3}
 --- !u!114 &114143017752235188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479e459c520332044aad73a9b66d6389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonarClip: {fileID: 8300000, guid: 3268044d48c5a474aa7c58e24c1d682a, type: 3}
 --- !u!114 &114402547265155384
 MonoBehaviour:
   m_ObjectHideFlags: 1

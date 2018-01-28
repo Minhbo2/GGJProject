@@ -13,6 +13,13 @@ public class WallDetection : MonoBehaviour {
 
     bool TransmitReady;
     bool StillIn;
+
+	AudioSource sonarSound;
+	public AudioClip sonarHitClip;
+	public AudioClip WallHit;
+	public AudioClip HidersCollide;
+	public AudioClip sonarClip;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +27,9 @@ public class WallDetection : MonoBehaviour {
         m_SignalSpeed = 1.1f;
         ScaleTime = .1f;
         StillIn = false;
+
+		sonarSound = gameObject.AddComponent<AudioSource> ();
+
     }
 
 
@@ -30,6 +40,9 @@ public class WallDetection : MonoBehaviour {
         if (TransmitReady)
         {
             Signal.transform.position = gameObject.transform.position;
+
+			sonarSound.clip = sonarClip;
+			sonarSound.Play ();
 
             Vector3 currentScale = Signal.transform.localScale;
             Signal.transform.localScale = new Vector3(currentScale.x * m_SignalSpeed, currentScale.y++, currentScale.z * m_SignalSpeed);
@@ -42,6 +55,8 @@ public class WallDetection : MonoBehaviour {
         if (other.tag == "Signal" && gameObject.tag != "Seeker")
         {
             BlipBack();
+			sonarSound.clip = sonarHitClip;
+			sonarSound.Play ();
         }
     }
 
@@ -51,6 +66,8 @@ public class WallDetection : MonoBehaviour {
         if (collision.gameObject.tag == "Wall")
         {
             BlipBack();
+			sonarSound.clip = WallHit;
+			sonarSound.Play ();
 
         }
     }
@@ -71,6 +88,12 @@ public class WallDetection : MonoBehaviour {
             if (Signal == null)
                 Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
 
+			if (collision.gameObject.tag == "Hider")
+			{
+				sonarSound.clip = HidersCollide;
+				sonarSound.Play ();
+			}
+
             StartCoroutine(TransmitSignal(ScaleTime));
         }
     }
@@ -85,6 +108,10 @@ public class WallDetection : MonoBehaviour {
         if (Signal == null)
             Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
 
+		sonarSound.clip = sonarClip;
+		sonarSound.pitch = 1.5f;
+		sonarSound.Play ();
+		sonarSound.pitch = 1.0f;
         StartCoroutine(TransmitSignal(ScaleTime));
     }
 

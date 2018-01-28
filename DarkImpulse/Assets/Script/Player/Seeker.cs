@@ -18,6 +18,8 @@ public class Seeker : MonoBehaviour {
     //How long to scale signal for
     float ScaleTime;
 
+	AudioSource sonarSound;
+	public AudioClip sonarClip;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +28,8 @@ public class Seeker : MonoBehaviour {
         m_SignalSpeed = 1.075f;
         m_SignalCooldown = 0f;
         ScaleTime = 1f;
+
+		sonarSound = gameObject.AddComponent<AudioSource> ();
     }
 	
 	// Update is called once per frame
@@ -45,6 +49,17 @@ public class Seeker : MonoBehaviour {
             if (Signal == null)
                 Signal = ResourcesManager.Create("Player/Animation/SeekerSignal");
 
+
+			if (sonarClip != null)
+			{
+				sonarSound.clip = sonarClip;
+				sonarSound.pitch = .75f;
+				sonarSound.Play ();
+
+			} else
+			{
+				Debug.Log ("failed to find audio clip");
+			}
 
             m_SignalCooldown = 5f;
 
