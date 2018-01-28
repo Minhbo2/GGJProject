@@ -18,7 +18,7 @@ public class WallDetection : MonoBehaviour {
     {
         wait = false;
         m_SignalSpeed = 1.1f;
-        ScaleTime = .35f;
+        ScaleTime = .1f;
         StillIn = false;
     }
 

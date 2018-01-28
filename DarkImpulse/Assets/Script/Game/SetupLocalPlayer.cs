@@ -12,19 +12,16 @@ public class SetupLocalPlayer : NetworkBehaviour
     public int lobbyAssignFlag;
 
     [SerializeField]
-    private GameObject tagComponent;
-    [SerializeField]
-    private GameObject detectionComponent;
-    [SerializeField]
-    private GameObject locationNotification;
-    [SerializeField]
     private float minBoxBound;
     [SerializeField]
     private float maxBoxBound;
     [SerializeField]
     private float sphereCastRadius;
+    [SerializeField]
+    private GameObject light;
 
 
+    private Seeker seekerScript;
     private int SeekerFlag         = 1;
     private Vector3 seekerPosition = new Vector3(0, 0, 0);
 
@@ -42,7 +39,12 @@ public class SetupLocalPlayer : NetworkBehaviour
 
         Renderer ren = GetComponent<Renderer>();
         if (this.IsSeeker())
+        {
             ren.material.color = Color.red;
+            seekerScript = GetComponent<Seeker>();
+            light.SetActive(true);
+            seekerScript.enabled = true;
+        }
         else
             ren.material.color = Color.green;
     }
@@ -51,7 +53,6 @@ public class SetupLocalPlayer : NetworkBehaviour
 
     private bool IsSeeker()
     {
-        print(lobbyAssignFlag);
         return (lobbyAssignFlag == SeekerFlag);
     }
 

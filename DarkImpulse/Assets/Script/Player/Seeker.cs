@@ -46,7 +46,7 @@ public class Seeker : MonoBehaviour {
                 Signal = ResourcesManager.Create("Player/Animation/SeekerSignal");
 
 
-            m_SignalCooldown = 15f;
+            m_SignalCooldown = 5f;
 
             StartCoroutine(SignalCooldown(m_SignalCooldown));
 
