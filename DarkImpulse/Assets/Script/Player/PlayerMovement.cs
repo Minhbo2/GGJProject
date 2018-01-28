@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour {
     public float m_MaxSpeed;
 
 
+    private string horizontalAxis;
+    private string verticalAxis;
 
 
     // Use this for initialization
@@ -29,6 +31,13 @@ public class PlayerMovement : MonoBehaviour {
         if (GetComponent<Seeker>().enabled == false)
         {
             gameObject.tag = "Hider";
+            horizontalAxis = "ArrowHorizontal";
+            verticalAxis = "ArrowVertical";
+        }
+        else
+        {
+            horizontalAxis = "Horizontal";
+            verticalAxis = "Vertical";
         }
     }
 
@@ -37,37 +46,12 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-
-        //if (m_RigidBody.velocity.sqrMagnitude < m_MaxSpeed)
-        //{
-        //    if (Input.GetKey(KeyCode.W))
-        //    {
-        //        m_RigidBody.velocity += Vector3.forward * m_MoveSpeed;
-        //    }
-
-        //    if (Input.GetKey(KeyCode.S))
-        //    {
-        //        m_RigidBody.velocity += Vector3.back * m_MoveSpeed;
-        //    }
-
-        //    if (Input.GetKey(KeyCode.A))
-        //    {
-        //        m_RigidBody.velocity += Vector3.left * m_MoveSpeed;
-        //    }
-        //    if (Input.GetKey(KeyCode.D))
-        //    {
-        //        m_RigidBody.velocity += Vector3.right * m_MoveSpeed;
-        //    }
-
-        //}
-
-        float translation = Input.GetAxis("Vertical") * m_MoveSpeed;
-        float translation1 = Input.GetAxis("Horizontal") * m_MoveSpeed;
+        float translation = Input.GetAxis(verticalAxis) * m_MoveSpeed;
+        float translation1 = Input.GetAxis(horizontalAxis) * m_MoveSpeed;
         translation *= Time.deltaTime;
         translation1 *= Time.deltaTime;
-        transform.Translate(translation1, 0, 0);
-        transform.Translate(0, 0, translation);
-
+        this.transform.Translate(translation1, 0, 0);
+        this.transform.Translate(0, 0, translation);
     }
 
 }
