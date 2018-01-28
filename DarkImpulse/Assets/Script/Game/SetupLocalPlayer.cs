@@ -34,19 +34,19 @@ public class SetupLocalPlayer : NetworkBehaviour
             //Enable Movement script
             PlayerMovement s_MovementScript = GetComponent<PlayerMovement>();
             s_MovementScript.enabled        = true;
-            InitLocalPlayer();
-        }
 
-        Renderer ren = GetComponent<Renderer>();
-        if (this.IsSeeker())
-        {
-            ren.material.color = Color.red;
-            seekerScript = GetComponent<Seeker>();
-            light.SetActive(true);
-            seekerScript.enabled = true;
+            InitLocalPlayer();
+
+            Renderer ren = GetComponent<Renderer>();
+            if (this.IsSeeker())
+            {
+                seekerScript = GetComponent<Seeker>();
+                seekerScript.enabled = true;
+                light.SetActive(true);
+            }
+            else
+                ren.material.color = Color.green;
         }
-        else
-            ren.material.color = Color.green;
     }
 
 
