@@ -22,8 +22,9 @@ public class SetupLocalPlayer : NetworkBehaviour
 
 
     private Seeker seekerScript;
-    private int SeekerFlag         = 1;
-    private Vector3 seekerPosition = new Vector3(0, 0, 0);
+    private int SeekerFlag                = 1;
+    private Vector3 seekerPosition        = new Vector3(0, 0, 0);
+    public static GameObject seekerPlayer = null;
 
 
     // Use this for initialization
@@ -38,14 +39,20 @@ public class SetupLocalPlayer : NetworkBehaviour
             InitLocalPlayer();
 
             Renderer ren = GetComponent<Renderer>();
-            if (this.IsSeeker())
+            if (seekerPlayer == null)
             {
-                seekerScript = GetComponent<Seeker>();
-                seekerScript.enabled = true;
-                light.SetActive(true);
+                if (this.IsSeeker())
+                {
+                    seekerPlayer = this.gameObject;
+                    seekerScript = GetComponent<Seeker>();
+                    seekerScript.enabled = true;
+                    light.SetActive(true);
+                }
+                else
+                    ren.material.color = Color.green;
             }
-            else
-                ren.material.color = Color.green;
+
+
         }
     }
 
