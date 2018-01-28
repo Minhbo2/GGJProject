@@ -69,6 +69,7 @@ public class WallDetection : MonoBehaviour {
             BlipBack();
 			sonarSound.clip = sonarHitClip;
 			sonarSound.Play ();
+            Debug.Log("Blip");
         }
     }
 
@@ -106,7 +107,14 @@ public class WallDetection : MonoBehaviour {
 				sonarSound.Play ();
 			}
 
-            StartCoroutine(TransmitSignal(ScaleTime));
+            if (gameObject.tag == "Seeker")
+            {
+                StartCoroutine(TransmitSignal(ScaleTime));
+            }
+            else {
+                StartCoroutine(TransmitSignal(ScaleTime*.5f));
+
+            }
         }
     }
 
@@ -130,6 +138,7 @@ public class WallDetection : MonoBehaviour {
     IEnumerator TransmitSignal(float time)
     {
         TransmitReady = true;
+
         yield return new WaitForSeconds(time);
         TransmitReady = false;
         wait = false;
