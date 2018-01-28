@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public GameObject childSpotlight;
     // Use this for initialization
+	
+
     void Start ()
     {
 		m_MoveSpeed = 10.0f;
@@ -30,11 +32,26 @@ public class PlayerMovement : MonoBehaviour {
 
         if (GetComponent<Seeker>().enabled == false)
         {
-            gameObject.tag = "Hider";
-            horizontalAxis = "ArrowHorizontal";
-            verticalAxis = "ArrowVertical";
-            childSpotlight.SetActive(false);
-
+			if (gameObject.name == "Player_Bot1")
+			{
+				gameObject.tag = "Hider";
+				horizontalAxis = "ArrowHorizontal";
+				verticalAxis = "ArrowVertical";
+				childSpotlight.SetActive(false);
+			} else if (gameObject.name == "Player_Bot2")
+			{
+				gameObject.tag = "Hider";
+				horizontalAxis = "ArrowHorizontal2";
+				verticalAxis = "ArrowVertical2";
+				childSpotlight.SetActive(false);
+			} else if (gameObject.name == "Player_Bot3")
+			{
+				gameObject.tag = "Hider";
+				horizontalAxis = "ArrowHorizontal3";
+				verticalAxis = "ArrowVertical3";
+				childSpotlight.SetActive(false);
+			}
+           
         }
         else
         {
