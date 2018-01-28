@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Seeker : MonoBehaviour {
 
-<<<<<<< HEAD
+
     PlayerMovement s_PlayerMovement;
-=======
->>>>>>> wall
+
     GameObject Signal;
 
     //How fast will the speed travel
@@ -19,27 +18,15 @@ public class Seeker : MonoBehaviour {
     //How long to scale signal for
     float ScaleTime;
 
-<<<<<<< HEAD
     //Custom speed variables in inspector apart from player movement script, so you dont have to touch playermovement script
     public float CustomSeekerSpeed;
     public float CustomMaxSeekerSpeed;
 
     bool TransmitReady;
-    // Use this for initialization
-    void Start () {
-        s_PlayerMovement = GetComponent<PlayerMovement>();
 
-        if (CustomMaxSeekerSpeed != 0)
-        s_PlayerMovement.m_MaxSpeed = CustomMaxSeekerSpeed;
-
-        if (CustomSeekerSpeed != 0)
-        s_PlayerMovement.m_MoveSpeed = CustomSeekerSpeed;
-=======
-    bool TransmitReady;
     // Use this for initialization
     void Start () {
         Signal = null;
->>>>>>> wall
 
         m_SignalSpeed = 1.075f;
         m_SignalCooldown = 0f;
@@ -61,11 +48,8 @@ public class Seeker : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && m_SignalCooldown == 0f)
         {
             if (Signal == null)
-<<<<<<< HEAD
-                Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
-=======
                 Signal = ResourcesManager.Create("Player/Animation/SeekerSignal");
->>>>>>> wall
+
 
             m_SignalCooldown = 15f;
 
@@ -74,12 +58,9 @@ public class Seeker : MonoBehaviour {
             StartCoroutine(TransmitSignal(ScaleTime));
 
         }
-<<<<<<< HEAD
 
 
        // Debug.Log(m_SignalCooldown);
-=======
->>>>>>> wall
     }
 
     IEnumerator SignalCooldown(float timer)
@@ -93,9 +74,5 @@ public class Seeker : MonoBehaviour {
         yield return new WaitForSeconds(time);
 
         Destroy (Signal);
-<<<<<<< HEAD
-=======
-        
->>>>>>> wall
     }
 }

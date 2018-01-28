@@ -51,6 +51,7 @@ public class SetupLocalPlayer : NetworkBehaviour
 
     private bool IsSeeker()
     {
+        print(lobbyAssignFlag);
         return (lobbyAssignFlag == SeekerFlag);
     }
 
