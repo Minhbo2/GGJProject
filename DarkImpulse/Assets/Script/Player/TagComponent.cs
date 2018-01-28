@@ -41,6 +41,6 @@ public class TagComponent : MonoBehaviour {
 
     private void SetHiderPositionNotification()
     {
-        m_WallDetection.PlayerDetected();
+        //m_WallDetection.PlayerDetected();
     }
 }
