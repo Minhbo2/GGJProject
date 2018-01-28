@@ -37,6 +37,7 @@ public class SetupLocalPlayer : NetworkBehaviour
             //Enable Movement script
             PlayerMovement s_MovementScript = GetComponent<PlayerMovement>();
             s_MovementScript.enabled        = true;
+            InitLocalPlayer();
         }
 
         Renderer ren = GetComponent<Renderer>();
@@ -65,8 +66,7 @@ public class SetupLocalPlayer : NetworkBehaviour
             return;
         }
 
-        //TODO:
-        //Set a random point around the seeker
+
         bool hasEmptyLocation = false;
         while (!hasEmptyLocation)
         {
@@ -83,11 +83,10 @@ public class SetupLocalPlayer : NetworkBehaviour
 
     private bool IsEmpty(Vector3 castAtLocation)
     {
+        print(castAtLocation);
         Ray ray = new Ray(castAtLocation, Vector3.zero);
         RaycastHit hitInfo;
         bool didHit = Physics.SphereCast(ray, sphereCastRadius, out hitInfo);
-        if (didHit)
-            print(hitInfo.collider.name);
         return !didHit;
     }
 
