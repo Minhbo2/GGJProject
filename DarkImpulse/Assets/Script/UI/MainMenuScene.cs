@@ -8,7 +8,7 @@ public class MainMenuScene : MonoBehaviour
 
 	public void PlayButton()
 	{
-		SceneManager.LoadScene ("Lobby");
+		SceneManager.LoadScene ("Level1");
 	}
 
 }

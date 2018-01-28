@@ -41,7 +41,7 @@ public class Seeker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (m_SignalCooldown != 0f)
+        if (m_SignalCooldown != 0f && Signal != null)
         {
             m_SignalCooldown -= Time.deltaTime;
             Signal.transform.position = gameObject.transform.position;
