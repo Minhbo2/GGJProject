@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
         }
         else
         {
+            gameObject.tag = "Seeker";
             horizontalAxis = "Horizontal";
             verticalAxis = "Vertical";
             childSpotlight.SetActive(true);
