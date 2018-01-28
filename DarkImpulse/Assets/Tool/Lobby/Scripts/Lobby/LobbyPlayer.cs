@@ -43,12 +43,6 @@ namespace Prototype.NetworkLobby
         //static Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
 
 
-        public int RandomAssignFlag()
-        {
-            return Random.Range(0, 4);
-        }
-
-
 
 
         public override void OnClientEnterLobby()

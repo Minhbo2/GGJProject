@@ -8,8 +8,6 @@ public class SetupLocalPlayer : NetworkBehaviour
     public string playerName;
     [SyncVar]
     public Color playerColor;
-    [SyncVar]
-    public int lobbyAssignFlag;
 
     [SerializeField]
     private float minBoxBound;
@@ -22,9 +20,8 @@ public class SetupLocalPlayer : NetworkBehaviour
 
 
     private Seeker seekerScript;
-    private int SeekerFlag                = 1;
+    private int seekerFlag                = 1;
     private Vector3 seekerPosition        = new Vector3(0, 0, 0);
-    public static GameObject seekerPlayer = null;
 
 
     // Use this for initialization
@@ -39,20 +36,19 @@ public class SetupLocalPlayer : NetworkBehaviour
             InitLocalPlayer();
 
             Renderer ren = GetComponent<Renderer>();
-            if (seekerPlayer == null)
+            if (this.IsSeeker())
             {
-                if (this.IsSeeker())
-                {
-                    seekerPlayer = this.gameObject;
-                    seekerScript = GetComponent<Seeker>();
-                    seekerScript.enabled = true;
-                    light.SetActive(true);
-                }
-                else
-                    ren.material.color = Color.green;
+                seekerScript = GetComponent<Seeker>();
+                seekerScript.enabled = true;
+                light.SetActive(true);
             }
+            else
+                ren.material.color = Color.green;
+        }
 
-
+        if (IsSeeker())
+        {
+            light.SetActive(true);
         }
     }
 
@@ -60,7 +56,8 @@ public class SetupLocalPlayer : NetworkBehaviour
 
     private bool IsSeeker()
     {
-        return (lobbyAssignFlag == SeekerFlag);
+        int rand = Random.Range(0, 5);
+        return(rand == seekerFlag);
     }
 
 
