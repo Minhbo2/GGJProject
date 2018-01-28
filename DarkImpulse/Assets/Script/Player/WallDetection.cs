@@ -3,32 +3,82 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WallDetection : MonoBehaviour {
+    GameObject Signal;
+    bool wait;
+    //How fast will the speed travel
+    float m_SignalSpeed;
 
-    private Renderer m_playerColor;
+    //How long to scale signal for
+    float ScaleTime;
 
-	// Use this for initialization
-	void Start () {
-        m_playerColor = GetComponent<Renderer>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    bool TransmitReady;
+    bool StillIn;
+    // Use this for initialization
+    void Start()
+    {
+        wait = false;
+        m_SignalSpeed = 1.1f;
+        ScaleTime = .45f;
+        StillIn = false;
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (TransmitReady)
+        {
+            Signal.transform.position = gameObject.transform.position;
+
+            Vector3 currentScale = Signal.transform.localScale;
+            Signal.transform.localScale = new Vector3(currentScale.x * m_SignalSpeed, currentScale.y++, currentScale.z * m_SignalSpeed);
+        }
+
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall")
         {
-            Debug.Log("Collided");
-            m_playerColor.material = Resources.Load("NPC/Material/testMat_2") as Material;
-            StartCoroutine(loseDetection());
+            if (Signal == null)
+                Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
+
+            StartCoroutine(TransmitSignal(ScaleTime));
         }
     }
 
-    IEnumerator loseDetection()
+    private void OnCollisionStay(Collision collision)
     {
-        yield return new WaitForSeconds(1);
-        m_playerColor.material = Resources.Load("NPC/Material/testMat_1") as Material;
+
+        Debug.Log("asdasd");
+        if (wait == false)
+        {
+            StillIn = true;
+            wait = true;
+        }
+
+        if ((collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Hider") && StillIn == true)
+        {
+            StillIn = false;
+            if (Signal == null)
+                Signal = Instantiate(Resources.Load("Player/Animation/SeekerSignal", typeof(GameObject)) as GameObject);
+
+            StartCoroutine(TransmitSignal(ScaleTime));
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        StillIn = false;
+    }
+
+    IEnumerator TransmitSignal(float time)
+    {
+        TransmitReady = true;
+        yield return new WaitForSeconds(time);
+        TransmitReady = false;
+        wait = false;
+        Destroy(Signal);
     }
 }
