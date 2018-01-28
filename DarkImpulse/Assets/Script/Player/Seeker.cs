@@ -73,6 +73,14 @@ public class Seeker : MonoBehaviour {
        // Debug.Log(m_SignalCooldown);
     }
 
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Hider")
+		{
+			Destroy (other.gameObject, 2f);
+		}
+	}
+
     IEnumerator SignalCooldown(float timer)
     {
         yield return new WaitForSeconds(timer);
