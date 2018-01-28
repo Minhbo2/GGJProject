@@ -36,22 +36,14 @@ public class SetupLocalPlayer : NetworkBehaviour
         {
             //Enable Movement script
             PlayerMovement s_MovementScript = GetComponent<PlayerMovement>();
-            s_MovementScript.enabled = true;
-           
-
-            Renderer renderer = GetComponent<Renderer>();
-            renderer.material.color = playerColor;
-            this.gameObject.name = playerName;
-            if (IsSeeker())
-            {
-                ManageComponent(tagComponent);
-                ManageComponent(detectionComponent);
-            }
-            else
-                ManageComponent(locationNotification);
-
-            SetLocalPlayerPosition();
+            s_MovementScript.enabled        = true;
         }
+
+        Renderer ren = GetComponent<Renderer>();
+        if (this.IsSeeker())
+            ren.material.color = Color.red;
+        else
+            ren.material.color = Color.green;
     }
 
 
@@ -64,19 +56,8 @@ public class SetupLocalPlayer : NetworkBehaviour
 
 
 
-    private void ManageComponent(GameObject component)
-    {
-        if (component == null)
-        {
-            print("missing component!");
-            return;
-        }
-        component.SetActive(true);
-    }
 
-
-
-    private void SetLocalPlayerPosition()
+    private void InitLocalPlayer()
     {
         if (IsSeeker())
         {
@@ -97,7 +78,6 @@ public class SetupLocalPlayer : NetworkBehaviour
                 return;
             }
         }
-        
     }
 
 

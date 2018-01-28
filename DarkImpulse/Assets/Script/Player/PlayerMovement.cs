@@ -10,23 +10,24 @@ public class PlayerMovement : MonoBehaviour {
     public float m_SignalSpeed;
     public float m_MaxSpeed;
 
+
+
+
     // Use this for initialization
     void Start ()
     {
 		m_MoveSpeed = 10.0f;
         m_MaxSpeed = 250;
 		m_RigidBody = GetComponent<Rigidbody> ();
+        Renderer ren = GetComponent<Renderer>();
 
         if (!m_RigidBody)
         {
            m_RigidBody = gameObject.AddComponent<Rigidbody>() as Rigidbody;
         }
-    }
-
-    private void Update()
-    {
 
     }
+
 
     // Update is called once per frame
     void FixedUpdate ()
